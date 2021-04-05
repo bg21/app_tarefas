@@ -21,6 +21,17 @@ export default function App() {
     }
   ]);
 
+  function deletarTarefa(id){
+    let newTarefas = tarefas.filter(function(val){
+      return val.id != id;
+    });
+    alert("A tarefa: "+ id+ " foi deletada com sucesso!");
+
+
+    setarTarefas(newTarefas);
+  }
+
+  
   
   let [fontsLoaded] = useFonts({
     Inter_900Black,
@@ -51,7 +62,7 @@ export default function App() {
 
 
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> deletarTarefa(val.id)}>
                 <AntDesign name="minuscircle" size={24} color="black" />
               </TouchableOpacity>
             </View>
